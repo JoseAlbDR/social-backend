@@ -38,6 +38,16 @@ export class SocialServer {
         secure: false,
       })
     );
+    app.use(hpp());
+    app.use(helmet());
+    app.use(
+      cors({
+        origin: "*",
+        credentials: true,
+        optionsSuccessStatus: 200,
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      })
+    );
   }
 
   private standardMiddleware(app: Application): void {}
