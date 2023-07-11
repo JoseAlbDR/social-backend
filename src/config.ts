@@ -3,12 +3,22 @@ import dotenv from "dotenv";
 dotenv.config({});
 
 class Config {
-  public DATABSE_URL: string | undefined = process.env.DATABASE_URL;
-  public JWT_TOKEN: string | undefined = process.env.JWT_TOKEN;
-  public NODE_ENV: string | undefined = process.env.NODE_ENV;
-  public SECRET_KEY_ONE: string | undefined = process.env.SECRET_KEY_ONE;
-  public SECRET_KEY_TWO: string | undefined = process.env.SECRET_KEY_TWO;
-  public CLIENT_URL: string | undefined = process.env.CLIENT_URL;
-}
+  public DATABSE_URL: string | undefined;
+  public JWT_TOKEN: string | undefined;
+  public NODE_ENV: string | undefined;
+  public SECRET_KEY_ONE: string | undefined;
+  public SECRET_KEY_TWO: string | undefined;
+  public CLIENT_URL: string | undefined;
 
+  private readonly DEFAULT_DATABASE_URL: string =
+    "mongodb://127.0.0.1:27017/socialapp-backend";
+  constructor() {
+    this.DATABSE_URL = process.env.DATABASE_URL || this.DEFAULT_DATABASE_URL;
+    this.JWT_TOKEN = process.env.JWT_TOKEN || "1234";
+    this.NODE_ENV = process.env.NODE_ENV || "";
+    this.SECRET_KEY_ONE = process.env.SECRET_KEY_ONE || "";
+    this.SECRET_KEY_TWO = process.env.SECRET_KEY_TWO || "";
+    this.CLIENT_URL = process.env.CLIENT_URL || "";
+  }
+}
 export const config: Config = new Config();
