@@ -2,6 +2,27 @@ import dotenv from "dotenv";
 
 dotenv.config({});
 
+// const DEFAULT_DATABASE_URL: string =
+//   "mongodb://127.0.0.1:27017/socialapp-backend";
+
+// export const config = {
+//   DATABASE_URL: process.env.DATABASE_URL || DEFAULT_DATABASE_URL,
+//   JWT_TOKEN: process.env.JWT_TOKEN || "1234",
+//   NODE_ENV: process.env.NODE_ENV || "",
+//   SECRET_KEY_ONE: process.env.SECRET_KEY_ONE || "",
+//   SECRET_KEY_TWO: process.env.SECRET_KEY_TWO || "",
+//   CLIENT_URL: process.env.CLIENT_URL || "",
+//   REDIS_HOST: process.env.REDIS_HOST || "",
+// };
+
+// export function validateConfig(): void {
+//   for (const [key, value] of Object.entries(config)) {
+//     if (value === undefined) {
+//       throw new Error(`${key} is not defined`);
+//     }
+//   }
+// }
+
 class Config {
   public DATABASE_URL: string | undefined;
   public JWT_TOKEN: string | undefined;
