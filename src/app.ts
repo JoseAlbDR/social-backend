@@ -6,6 +6,7 @@ import { config } from "./config";
 class Application {
   public initialize(): void {
     this.loadConfig();
+
     dbConnection();
     const app: Express = express();
     const server: SocialServer = new SocialServer(app);

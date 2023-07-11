@@ -1,11 +1,9 @@
 import mongoose from "mongoose";
-
+import { config } from "./config";
 export default () => {
   const connect = async () => {
     try {
-      const DB = await mongoose.connect(
-        "mongodb://127.0.0.1:27017/socialapp-backend"
-      );
+      const DB = await mongoose.connect(`${config.DATABASE_URL}`);
       if (DB) {
         console.log("Succesfully connected to database");
       }
