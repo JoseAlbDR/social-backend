@@ -10,6 +10,7 @@ import http from "http";
 import cors from "cors";
 import helmet from "helmet";
 import hpp from "hpp";
+import compression from "compression";
 import cookierSession from "cookie-session";
 import HTTP_STATUS from "http-status-codes";
 import "express-async-errors";
@@ -50,7 +51,11 @@ export class SocialServer {
     );
   }
 
-  private standardMiddleware(app: Application): void {}
+  private standardMiddleware(app: Application): void {
+    app.use(compression());
+    app.use(json({ limit: "50mb" }));
+    app.use(urlencoded({ extended: true, limit: "50mb" }));
+  }
 
   private routeMiddleware(app: Application): void {}
 
