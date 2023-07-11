@@ -15,7 +15,13 @@ export class SocialServer {
     this.app = app;
   }
 
-  public start(): void {}
+  public start(): void {
+    this.securityMiddleware(this.app);
+    this.standardMiddleware(this.app);
+    this.routeMiddleware(this.app);
+    this.globalErrorHandler(this.app);
+    this.startServer(this.app);
+  }
 
   private securityMiddleware(app: Application): void {}
 
