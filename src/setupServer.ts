@@ -29,7 +29,16 @@ export class SocialServer {
     this.startServer(this.app);
   }
 
-  private securityMiddleware(app: Application): void {}
+  private securityMiddleware(app: Application): void {
+    app.use(
+      cookierSession({
+        name: "session",
+        keys: ["test1", "test2"],
+        maxAge: 30 * 7 * 3600000,
+        secure: false,
+      })
+    );
+  }
 
   private standardMiddleware(app: Application): void {}
 
